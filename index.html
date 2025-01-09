@@ -127,20 +127,35 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>03 May 1990</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="https://antoniorodr.github.io/Antonio_portfolio/" target="_blank">My Portfolio</a></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+47 411 02 665</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Trondheim, Norway</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>34</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span id="birthday">03 May 1990</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span id="age"></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>University (Nurse)</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a href="mailto:antonioinorge@hotmail.com">antonioinorge@hotmail.com</a></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
                 </ul>
               </div>
+              
+              <script>
+                function calculateAge(birthday) {
+                  const today = new Date();
+                  const birthDate = new Date(birthday);
+                  let age = today.getFullYear() - birthDate.getFullYear();
+                  const monthDifference = today.getMonth() - birthDate.getMonth();
+                  
+                  // If the birth date hasn't occurred yet this year, subtract one year from age
+                  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                  }
+                  
+                  return age;
+                }
+              
+                // Get the birthday from the span
+                const birthday = document.getElementById("birthday").innerText;
+                
+                // Calculate the age and display it
+                document.getElementById("age").innerText = calculateAge(birthday);
+              </script>
             </div>
             <p class="py-3">
               In addition to Python, I have a basic understanding of HTML, JavaScript, and CSS. I also plan to learn Swift and other programming languages in the future.
